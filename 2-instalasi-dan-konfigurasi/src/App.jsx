@@ -1,18 +1,28 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import Header from './components/Header';
+import { useState } from "react";
+import MyButton from "./components/MyButton";
+import MyCounter from "./components/MyCounter";
 
 function App() {
-  const [likes, setLikes] = useState(0);
+  const [counter, setCounter] = useState(0);
 
-  function handleClick() {
-    setLikes(likes + 1);
+  function increment() {
+    setCounter(counter + 1);
   }
 
+  function decrement() {
+    setCounter(counter - 1);
+  }
+
+  function reset() {
+    setCounter(0);
+  }
   return (
     <div>
-      <Header />
-      <button onClick={handleClick}>Like ({likes})</button>
+      <MyButton text={"-"} onClick={decrement} counter={counter} />
+      <MyCounter counter={counter} />
+      <MyButton text={"+"} onClick={increment} counter={counter} />
+      <MyButton text={"Reset!"} onClick={reset} counter={counter} />
     </div>
   );
 }
